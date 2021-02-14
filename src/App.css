@@ -1,38 +1,203 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+  background-color: #dee0e4;
+  text-align: left;
   min-height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.container {
+  position: absolute;
+  left: 50%;
+  top: 200px;
+  transform: translate(-50%, -50%);
+}
+
+.add-task {
+  display: inline-block;
+  align-items: center;
+  padding: 20px 0;
+  padding-right: 250px;
+  width: 655px;
+  border: none;
+  border-radius: 18px;
+  background-color: #ced2d9;
+  padding-left: 30px;
+  line-height: 30px;
+  font-size: 20px;
+  outline: none;
+  transition: all 0.2s ease-in;
+  overflow-wrap: break-word;
+}
+
+.add-task[data-placeholder]:empty:before {
+  content: attr(data-placeholder);
+  pointer-events: none;
+  color: #575b61;
+}
+
+.add-task[data-placeholder]:empty:focus:before {
+  color: #9c9c9c;
+}
+
+.add-task.focus {
+  background-color: white;
+  padding-left: 90px;
+  width: 625px;
+}
+
+.add-task.note {
+  background: radial-gradient(farthest-side at 50% 175%, #f1eeda, #ffffff);
+}
+
+.drop-wrapper {
+  position: absolute;
+  filter: url("#blur");
+  transform: translate(40px);
+  width: 150px;
+}
+
+.drop-source {
+  position: absolute;
+  height: 70px;
+  width: 70px;
+  background: #dee0e4;
+  transform: translate(-140px);
+}
+
+.drop {
+  position: absolute;
+  clip-path: polygon(50% 50%, 0 0, 0 100%);
+  height: 75px;
+  width: 55px;
+  border: none;
+  border-radius: 50%;
+  background: #dee0e4;
+  transform: translate(-70px);
+  transition: all 0.2s ease-in;
+}
+
+.drop.focus-event {
+  transform: translate(-50px);
+}
+
+.checkbox-wrapper {
+  position: absolute;
+  height: 25px;
+  width: 35px;
+  top: 23px;
+  transform: translate(-45px, 0);
+  filter: url("#blur");
+  transition: all 0.1s 0.2s ease-in;
+}
+
+.checkbox-wrapper.focus {
+  position: absolute;
+  height: 25px;
+  width: 35px;
+  margin-left: 25px;
+  transform: translate(-25px, 0);
+  transition: all 0.2s ease-in;
+}
+
+.checkbox-drop {
+  position: absolute;
+  height: 25px;
+  width: 65px;
+  background-color: #dee0e4;
+  clip-path: polygon(50% 50%, 100% 100%, 100% 0);
+  transform: translate(-70%, 0%);
+  transition: all 0.2s ease-in;
+}
+
+.checkbox-drop.focus {
+  width: 45px;
+  transform: translate(0%, 0%);
+  background-color: #e9e9e9;
+}
+
+.checkbox {
+  position: absolute;
+  background-color: #dee0e4;
+  height: 25px;
+  width: 25px;
+  border-radius: 8px;
+  top: 50%;
+  transform: translate(0px, -50%);
+  transition: all 0.2s ease-in;
+}
+
+.checkbox.focus {
+  background-color: #e9e9e9;
+  margin-left: 25px;
+  height: 38px;
+  width: 38px;
+  transform: translate(0, -50%);
+}
+
+.task {
+  padding: 20px 0;
+}
+
+.highlight {
+  color: #7e5b25;
+}
+
+.calender {
+  position: absolute;
+  background: #f2f4f5;
+  height: 43px;
+  width: 43px;
+  right: 200px;
+  top: 15px;
+  border: none;
+  border-radius: 12px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  visibility: hidden;
 }
 
-.App-link {
-  color: #61dafb;
+.calender.focus {
+  visibility: visible;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.calender svg {
+  height: 23px;
+}
+
+.list {
+  position: absolute;
+  height: 43px;
+  width: 155px;
+  padding: 0 7px;
+  border: none;
+  border-radius: 12px;
+  background: #f2f4f5;
+  right: 20px;
+  top: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  visibility: hidden;
+}
+
+.list.focus {
+  visibility: visible;
+}
+
+.square {
+  height: 15px;
+  width: 15px;
+  border: slategray solid 3px;
+  border-radius: 8px;
+}
+
+.list-text {
+  font-size: 19px;
+}
+
+.list svg {
+  transform: translateY(-3px);
 }
