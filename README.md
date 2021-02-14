@@ -1,4 +1,4 @@
-# Test Glooey effect
+# Test Gooey effect
 
 
 ## Available Scripts
